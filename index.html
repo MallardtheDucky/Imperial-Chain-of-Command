@@ -4,6 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imperial Datapad | Personnel Records</title>
+
+    <!-- SEO / Link Preview Meta Tags -->
+    <meta name="description" content="Imperial Chain of Command — Personnel Hierarchy Database. Full rank structures for the Imperial Military, ISB, and Imperial Governance. Classification: Restricted.">
+
+    <!-- Open Graph (GitHub, Discord, Slack, Facebook previews) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Imperial Datapad | Personnel Records">
+    <meta property="og:description" content="Imperial Chain of Command — Full rank structures for the Imperial Military, ISB, and Governance. Classification: Restricted. Glory to the Emperor.">
+    <meta property="og:site_name" content="Imperial Data Network">
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Imperial Datapad | Personnel Records">
+    <meta name="twitter:description" content="Imperial Chain of Command — Full rank structures for the Imperial Military, ISB, and Governance. Classification: Restricted.">
+
+    <!-- SEO / Link Preview Meta Tags -->
+    <meta name="description" content="Imperial Chain of Command — Personnel Hierarchy Database. Full rank structures for the Imperial Military, ISB, and Imperial Governance. Classification: Restricted.">
+
+    <!-- Open Graph (GitHub, Discord, Slack, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Imperial Datapad | Personnel Records">
+    <meta property="og:description" content="Imperial Chain of Command — Full rank structures for the Imperial Military, ISB, and Governance. Classification: Restricted. Glory to the Emperor.">
+    <meta property="og:site_name" content="Imperial Data Network">
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Imperial Datapad | Personnel Records">
+    <meta name="twitter:description" content="Imperial Chain of Command — Full rank structures for the Imperial Military, ISB, and Governance. Classification: Restricted.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/aurebesh" rel="stylesheet">
@@ -47,16 +75,8 @@
             margin: 0;
             font-family: 'Rajdhani', sans-serif;
         }
-
         @media (max-width: 768px) {
-            body {
-                height: auto;
-                min-height: 100vh;
-                overflow: auto;
-                align-items: flex-start;
-                justify-content: flex-start;
-                padding: 0;
-            }
+            body { height: auto; min-height: 100vh; overflow: auto; align-items: flex-start; justify-content: flex-start; }
         }
 
         /* ── Hardware Datapad Casing ── */
@@ -80,31 +100,27 @@
             position: relative;
             overflow: hidden;
         }
-
+        /* Laptop / medium PC: ensure chassis fits and table stays visible */
+        @media (min-width: 769px) and (max-width: 1400px) {
+            .datapad-chassis { width: 99vw; height: 98vh; padding: 12px 14px 10px; border-radius: 16px; }
+            #table-headers th { padding: 8px 8px !important; font-size: 10px !important; letter-spacing: 0.08em !important; }
+            #rank-table-body td > div { padding: 6px 8px !important; font-size: 11px !important; }
+            #rank-table-body td { padding: 0 !important; }
+            header .p-4.flex { padding: 8px 12px !important; }
+            header h1 { font-size: 1.5rem !important; }
+            .tab-btn { padding: 6px 16px !important; font-size: 12px !important; }
+            #modal > div { max-width: 96vw !important; max-height: 94vh !important; }
+            .insignia-panel { width: 210px !important; padding: 16px 12px !important; }
+            #modal-rank { font-size: 2rem !important; }
+            #modal .flex-grow.flex.flex-col.p-8 { padding: 18px !important; }
+        }
+        /* Mobile */
         @media (max-width: 768px) {
-            .datapad-chassis {
-                width: 100vw;
-                height: auto;
-                min-height: 100vh;
-                border-radius: 0;
-                border-left: none;
-                border-right: none;
-                padding: 10px 4px 24px;
-                overflow: visible;
-            }
-            .screen-bezel {
-                overflow: visible !important;
-                border-radius: 6px !important;
-            }
-            /* Hide purely decorative hardware elements on mobile */
-            .vent-left, .vent-right, .model-badge,
-            .screw-tl, .screw-tr, .screw-bl, .screw-br,
-            .datapad-chassis::before { display: none !important; }
+            .datapad-chassis { width: 100vw; height: auto; min-height: 100vh; border-radius: 0; border-left: none; border-right: none; padding: 10px 4px 24px; overflow: visible; }
+            .screen-bezel { overflow: visible !important; border-radius: 6px !important; }
+            .vent-left, .vent-right, .model-badge, .screw-tl, .screw-tr, .screw-bl, .screw-br { display: none !important; }
             .led-cluster { left: 12px; top: 6px; }
-            /* Header status bar — hide on mobile, too cramped */
             .header-status-bar { display: none !important; }
-            /* Header decorative data block */
-            .hidden.lg\\:flex { display: none !important; }
         }
 
         /* Chassis edge highlight strip */
@@ -485,114 +501,23 @@
         .custom-scroll::-webkit-scrollbar-track { background: transparent; }
         .custom-scroll::-webkit-scrollbar-thumb { background: #ff2a2a; border-radius: 2px; }
 
-        /* ── Mobile: header main row stacks vertically ── */
+        /* ── Mobile responsive ── */
         @media (max-width: 768px) {
-            /* Table container must scroll horizontally */
-            .flex-grow.overflow-auto {
-                overflow-x: auto !important;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            /* Main header row stacks */
-            header .p-4.flex.justify-between.items-center {
-                flex-direction: column !important;
-                align-items: flex-start !important;
-                gap: 10px !important;
-                padding: 10px 12px !important;
-            }
-
-            /* Title area */
-            header .p-4 > div.flex.items-center.gap-4 {
-                gap: 10px !important;
-            }
-            header h1 {
-                font-size: 1.4rem !important;
-            }
-
-            /* Tab buttons — full width row */
-            header .flex.gap-3 {
-                width: 100%;
-            }
-            .tab-btn {
-                flex: 1;
-                padding: 8px 4px !important;
-                font-size: 12px !important;
-                text-align: center;
-            }
-            header > div:last-child {
-                width: 100%;
-            }
-            header .flex.items-center.gap-4:last-child {
-                width: 100%;
-                justify-content: flex-end;
-            }
-
-            /* Modal — full screen on mobile */
-            #modal {
-                padding: 0 !important;
-                align-items: flex-start !important;
-            }
-            #modal > div {
-                max-width: 100% !important;
-                max-height: 100vh !important;
-                width: 100% !important;
-                height: 100vh !important;
-                border-left: none !important;
-                border-right: none !important;
-                border-radius: 0 !important;
-            }
-            /* Modal body — stack vertically */
-            #modal .flex-grow.overflow-y-auto.flex {
-                flex-direction: column !important;
-            }
-            /* Insignia panel — full width, shorter on mobile */
-            .insignia-panel {
-                width: 100% !important;
-                padding: 14px 16px !important;
-                border-left: 3px solid #ff2a2a !important;
-                border-bottom: 1px solid #1e2530 !important;
-            }
-            /* Rank title in modal */
-            #modal-rank {
-                font-size: 2rem !important;
-            }
-            /* Modal details padding */
-            #modal .flex-grow.flex.flex-col.p-8 {
-                padding: 16px !important;
-            }
-            /* Modal header */
-            #modal .p-5.border-b-2.flex.justify-between.items-center {
-                flex-wrap: wrap;
-                gap: 8px;
-                padding: 10px 12px !important;
-            }
-            /* Close button */
-            #modal button[onclick="closeModal()"] {
-                padding: 6px 14px !important;
-                font-size: 10px !important;
-            }
-            /* Footer status row — stack on mobile */
-            footer .px-4.py-2.flex.justify-between {
-                flex-direction: column !important;
-                gap: 4px !important;
-                font-size: 9px !important;
-            }
-            footer .flex.gap-5.items-center {
-                flex-wrap: wrap;
-                gap: 6px !important;
-            }
-            /* Ticker text size */
-            .ticker-wrap {
-                font-size: 8px !important;
-            }
-            /* Divider between insignia and details in modal — hide on mobile */
-            #modal .flex-grow.overflow-y-auto.flex > div[style*="width:1px"] {
-                display: none !important;
-            }
-            /* Plaque scale — smaller on mobile */
-            #modal-plaque-area {
-                transform: scale(0.95) !important;
-            }
+            .flex-grow.overflow-auto { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
+            header .p-4.flex.justify-between.items-center { flex-direction: column !important; align-items: flex-start !important; gap: 10px !important; padding: 10px 12px !important; }
+            header h1 { font-size: 1.3rem !important; }
+            header .flex.gap-3 { width: 100%; }
+            .tab-btn { flex: 1; padding: 8px 4px !important; font-size: 12px !important; text-align: center; }
+            #modal { padding: 0 !important; align-items: flex-start !important; }
+            #modal > div { max-width: 100% !important; max-height: 100vh !important; width: 100% !important; height: 100vh !important; border-left: none !important; border-right: none !important; border-radius: 0 !important; }
+            #modal .flex-grow.overflow-y-auto.flex { flex-direction: column !important; }
+            .insignia-panel { width: 100% !important; padding: 14px 16px !important; border-left: 3px solid #ff2a2a !important; border-bottom: 1px solid #1e2530 !important; }
+            #modal-rank { font-size: 1.8rem !important; }
+            #modal .flex-grow.flex.flex-col.p-8 { padding: 14px !important; }
+            #modal .p-5.border-b-2.flex.justify-between.items-center { flex-wrap: wrap; gap: 8px; padding: 10px 12px !important; }
+            footer .px-4.py-2.flex.justify-between { flex-direction: column !important; gap: 4px !important; font-size: 9px !important; }
+            footer .flex.gap-5.items-center { flex-wrap: wrap; gap: 6px !important; }
+            #modal-plaque-area { transform: scale(0.9) !important; }
         }
     </style>
 </head>
@@ -680,7 +605,7 @@
 
             <!-- Table View -->
             <div class="flex-grow overflow-auto relative z-10">
-                <table class="w-full text-left border-collapse min-w-[1300px]">
+                <table class="w-full text-left border-collapse" style="min-width: max(100%, 900px)">
                     <thead class="sticky top-0 z-20 bg-imperial-panel">
                         <tr id="table-headers" class="font-header text-imperial-lightgrey text-xs uppercase tracking-widest border-b-2 border-imperial-grey">
                             <!-- Headers injected via JS -->
